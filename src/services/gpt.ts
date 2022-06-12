@@ -23,7 +23,7 @@ function trimLines(additional: number, lines: string[]): string[] {
   // More lines == higher cost + better result
   // 2048 - 300 is upper bound for tokens.
   // We will assume 1 token ~= 4 characters and keep a window of ~500 tokens.
-  const maxPromptLength = 1000 * 4;
+  const maxPromptLength = 500 * 4;
   // Davinci costs 0.06 per 1k tokens, so this is roughly 3 cents per completion at the upper end.
   return trimLinesHelper(additional, lines, maxPromptLength);
 }
@@ -41,7 +41,7 @@ const additionalPrompt = "Napolean Hill:";
   return start + combinedLines + additionalPrompt;
 }
 
-const RESPONSE_TOKEN_MAXIMUM = 1000;
+const RESPONSE_TOKEN_MAXIMUM = 300;
 
 // IMPORTANT: Please only use this for local testing. If you are deploying
 // your app onto the internet, you should route requests through your own
@@ -57,7 +57,7 @@ async function getCompletion(prompt: string): Promise<string> {
   };
   const result = await axios({
     method: "post",
-    url: "https://api.openai.com/v1/engines/text-davinci-002/completions",
+    url: "https://api.openai.com/v1/engines/davinci/completions",
     data,
     headers: {
       Authorization: "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",
