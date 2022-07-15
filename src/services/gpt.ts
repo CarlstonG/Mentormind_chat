@@ -41,7 +41,7 @@ const additionalPrompt = "Napoleon:";
   return start + combinedLines + additionalPrompt;
 }
 
-const RESPONSE_TOKEN_MAXIMUM = 500;
+const RESPONSE_TOKEN_MAXIMUM = 1000;
 
 // IMPORTANT: Please only use this for local testing. If you are deploying
 // your app onto the internet, you should route requests through your own
@@ -53,7 +53,7 @@ async function getCompletion(prompt: string): Promise<string> {
     max_tokens: RESPONSE_TOKEN_MAXIMUM,
     temperature: 0.9,
     n: 1,
-    stop: ['Napoleon:', `Human:`],
+    stop: ['Napoleon Hill:', `Russell Brunson:`],
   };
   const result = await axios({
     method: "post",
