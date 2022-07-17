@@ -20,9 +20,9 @@ export default function MessageList() {
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
     {
-      author: "Napolian Hill",
+      author: "Napoleon Hill",
       message:
-        "Hi! I'm Napolian Hill. What would you like to ask?",
+        "Hi! I'm Napoleon Hill. What would you like to ask?",
       timestamp: new Date().getTime(),
     },
   ] as Message[]);
@@ -56,7 +56,7 @@ export default function MessageList() {
  
   return (
     <div className="message-list">
-      <Toolbar title="Chat with Napolian Hill" />
+      <Toolbar title="Chat with Napoleon Hill" />
 
       <div className="message-list-container">{MessageBuilderService.getMessages(messages, MY_USER_ID)}
       {loading && <TypingIndicator />}
